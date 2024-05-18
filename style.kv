@@ -1,6 +1,47 @@
+<WeatherCard>
+    padding: 4
+    size_hint: None, None
+    size: "200dp", "100dp"
+
+    MDRelativeLayout:
+        MDLabel:
+            id: label
+            text: "погода"
+            adaptive_size: True
+            color: "grey"
+            pos: "12dp", "12dp"
+            bold: True
+
 <MainScreen>:
-    padding: 15
-    MDLabel:
-        text: "QQ"
-    MDLabel:
-        text: "QQ"
+    pos_hint: {"center_x" : 0.5}
+    MDBoxLayout:
+        padding : "20sp"
+        orientation: "vertical"
+
+        MDLabel:
+            size_hint: 1, None
+            height: "30sp"
+            text: "Місто"
+
+        MDBoxLayout:
+            size_hint: 1, None
+            orientation: "horizontal"
+            spading: "60sp"
+
+            MDTextField:
+                hint_text: "Введіть місто"
+                mode: "fill"
+                height: "40sp"
+
+            MDIconButton:
+                icon: "magnify"
+                icon_size: "24sp"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 1
+
+            WeatherCard:
+                id: weather_card1
