@@ -13,35 +13,47 @@
             bold: True
 
 <MainScreen>:
-    pos_hint: {"center_x" : 0.5}
     MDBoxLayout:
-        padding : "20sp"
         orientation: "vertical"
-
-        MDLabel:
-            size_hint: 1, None
-            height: "30sp"
-            text: "Місто"
-
-        MDBoxLayout:
-            size_hint: 1, None
-            orientation: "horizontal"
-            spading: "60sp"
-
-            MDTextField:
-                hint_text: "Введіть місто"
-                mode: "fill"
-                height: "40sp"
-
-            MDIconButton:
-                icon: "magnify"
-                icon_size: "24sp"
-                theme_icon_color: "Custom"
-                icon_color: app.theme_cls.primary_color
+        MDTopAppBar:
+            title: "MDTopAppBar"
+            left_action_items: [["menu", lambda x: app.callback()]]
+            size_hint: (1, 0.1)
 
         MDBoxLayout:
-            orientation: "horizontal"
-            size_hint: 1, 1
+            padding : "20sp"
+            orientation: "vertical"
 
-            WeatherCard:
-                id: weather_card1
+
+            MDLabel:
+                size_hint: 1, None
+                height: "30sp"
+                text: "Місто"
+
+            MDBoxLayout:
+                size_hint: 1, None
+                orientation: "horizontal"
+                spading: "60sp"
+
+                MDTextField:
+                    id: city_field
+                    hint_text: "Введіть місто"
+                    mode: "fill"
+                    height: "40sp"
+
+                MDIconButton:
+                    id: search_btn
+                    icon: "magnify"
+                    icon_size: "24sp"
+                    theme_icon_color: "Custom"
+                    icon_color: app.theme_cls.primary_color
+                    on_press: root.weather_search()
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 1
+
+                WeatherCard:
+                    padding: 4
+                    size_hint: (0.8, 0.8)
+                    id: weather_card1
