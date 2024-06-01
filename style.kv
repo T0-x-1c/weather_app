@@ -1,16 +1,72 @@
 <WeatherCard>
     padding: 4
-    size_hint: None, None
-    size: "200dp", "100dp"
-
-    MDRelativeLayout:
+    size_hint: (1, 1)
+    MDBoxLayout:
+        orientation: "vertical"
         MDLabel:
-            id: label
-            text: "погода"
+            id: city_name_text
+            text: "Місто"
             adaptive_size: True
             color: "grey"
-            pos: "12dp", "12dp"
-            bold: True
+            font_style: "H3"
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDBoxLayout:
+                size_hint: (1, 1)
+                orientation: "horizontal"
+                MDLabel:
+                    id: temp_text
+                    text: "22°C"
+                    adaptive_size: True
+                    color: "grey"
+                    font_style: "H3"
+
+                AsyncImage:
+                    id: weather_icon
+                    source: "https://openweathermap.org/img/wn/10d@2x.png"
+                    size_hint: (None, None)
+                    height: "60sp"
+                    width: "60sp"
+
+            MDLabel:
+                id: feels_like_text
+                text: "22°C"
+                adaptive_size: True
+                color: "grey"
+
+
+
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                id: desc_text
+                text: "поточна погода"
+                adaptive_size: True
+                color: "grey"
+
+            MDLabel:
+                id: rain_text
+                text: "ймовірність опадів"
+                adaptive_size: True
+                color: "grey"
+
+                font_style: "Caption"
+            MDLabel:
+                id: wind_text
+                text: "Швидкість вітру"
+                adaptive_size: True
+                color: "grey"
+
+                font_style: "Caption"
+            MDLabel:
+                id: humidity_text
+                text: "Вологість"
+                adaptive_size: True
+                color: "grey"
+
+                font_style: "Caption"
+
 
 <MainScreen>:
     MDBoxLayout:
@@ -23,12 +79,6 @@
         MDBoxLayout:
             padding : "20sp"
             orientation: "vertical"
-
-
-            MDLabel:
-                size_hint: 1, None
-                height: "30sp"
-                text: "Місто"
 
             MDBoxLayout:
                 size_hint: 1, None
@@ -52,8 +102,9 @@
             MDBoxLayout:
                 orientation: "horizontal"
                 size_hint: 1, 1
-
-                WeatherCard:
+                MDCarousel:
+                    id: weather_carousel
+                    direction: "right"
                     padding: 4
-                    size_hint: (0.8, 0.8)
-                    id: weather_card1
+                    size_hint: (0.9, 0.9)
+
