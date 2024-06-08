@@ -1,6 +1,6 @@
 <WeatherCard>
     padding: 4
-    size_hint: (1, 1)
+    size_hint: (0.92, 1)
     MDBoxLayout:
         orientation: "vertical"
         MDLabel:
@@ -10,6 +10,7 @@
             color: "grey"
             font_style: "H3"
         MDLabel:
+            id: date_time
             text: "Зараз"
             adaptive_size: True
             color: "grey"
@@ -75,41 +76,34 @@
 
 <MainScreen>:
     MDBoxLayout:
+        padding : "20sp"
         orientation: "vertical"
-        MDTopAppBar:
-            title: "MDTopAppBar"
-            left_action_items: [["menu", lambda x: app.callback()]]
-            size_hint: (1, 0.1)
 
         MDBoxLayout:
-            padding : "20sp"
-            orientation: "vertical"
+            size_hint: 1, None
+            orientation: "horizontal"
+            spading: "60sp"
 
-            MDBoxLayout:
-                size_hint: 1, None
-                orientation: "horizontal"
-                spading: "60sp"
+            MDTextField:
+                id: city_field
+                hint_text: "Введіть місто"
+                mode: "fill"
+                height: "40sp"
 
-                MDTextField:
-                    id: city_field
-                    hint_text: "Введіть місто"
-                    mode: "fill"
-                    height: "40sp"
+            MDIconButton:
+                id: search_btn
+                icon: "magnify"
+                icon_size: "24sp"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_press: root.weather_search()
 
-                MDIconButton:
-                    id: search_btn
-                    icon: "magnify"
-                    icon_size: "24sp"
-                    theme_icon_color: "Custom"
-                    icon_color: app.theme_cls.primary_color
-                    on_press: root.weather_search()
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint: 1, 1
-                MDCarousel:
-                    id: weather_carousel
-                    direction: "right"
-                    padding: 4
-                    size_hint: (0.9, 0.9)
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 1
+            MDCarousel:
+                id: weather_carousel
+                direction: "right"
+                padding: 4
+                size_hint: (0.9, 0.9)
 
